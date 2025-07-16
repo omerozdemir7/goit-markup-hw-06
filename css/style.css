@@ -1,0 +1,886 @@
+/* ==========================================================================
+   1. KÖK DEĞİŞKENLER VE GLOBAL AYARLAR
+   ========================================================================== */
+
+:root {
+  --iris: #4d5ae5;
+  --ocean: #404bbf;
+  --navy-blue: #2e2f42;
+  --green: #31d0aa;
+  --slate: #434455;
+  --light-slate: #8e8f99;
+  --cornflower: #e7e9fc;
+  --cloud: #f4f4fd;
+  --navy-blue-modal: rgba(46, 47, 66, 0.4);
+  --white: #fff;
+  --dairy: #fcfcfc;
+  --font-family: "Roboto", sans-serif;
+  --second-family: "Raleway", sans-serif;
+  --transition-duration: 250ms;
+  --transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Global Sıfırlama ve Temel Stiller */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  color: var(--slate);
+  background-color: var(--white);
+  overflow-x: clip;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.container {
+  width: 100%;
+  max-width: 1158px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.section {
+  padding: 120px 0;
+}
+
+.section-title {
+  font-size: 36px;
+  line-height: 1.11;
+  font-weight: 700;
+  text-align: center;
+  text-transform: capitalize;
+  color: var(--navy-blue);
+  margin-bottom: 72px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+/* ==========================================================================
+   2. HEADER & NAVİGASYON (MASAÜSTÜ TEMEL)
+   ========================================================================== */
+
+.header {
+  border-bottom: 1px solid var(--cornflower);
+  background-color: var(--white);
+  box-shadow: 0 1px 6px 0 rgba(46, 47, 66, 0.08),
+    0 1px 1px 0 rgba(46, 47, 66, 0.16), 0 2px 1px 0 rgba(46, 47, 66, 0.08);
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  height: 72px;
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  font-family: var(--second-family);
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--iris);
+  margin-right: 76px;
+}
+
+.logo span {
+  color: var(--navy-blue);
+}
+
+.nav-menu {
+  display: flex;
+  gap: 40px;
+}
+
+.nav-link {
+  display: block;
+  font-weight: 500;
+  color: var(--navy-blue);
+  padding: 24px 0;
+  position: relative;
+  transition: color var(--transition-duration) var(--transition-timing-function);
+}
+
+.nav-link:hover,
+.nav-link:focus,
+.nav-link.current {
+  color: var(--ocean);
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px; /* tam alt */
+  width: 100%;
+  height: 0;
+  background-color: var(--ocean);
+  border-radius: 2px;
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+  pointer-events: none; /* tıklamayı engelle */
+}
+
+.nav-link:hover::after,
+.nav-link:focus::after {
+  height: 4px;
+  opacity: 1;
+}
+
+.contact-address {
+  margin-left: auto;
+  font-style: normal;
+}
+
+.address-list {
+  display: flex;
+  gap: 40px;
+}
+
+.address-link {
+  transition: color var(--transition-duration) var(--transition-timing-function);
+}
+
+.address-link:hover,
+.address-link:focus {
+  color: var(--ocean);
+}
+
+.hamburger-btn {
+  display: none;
+}
+
+/* ==========================================================================
+   3. HERO & DİĞER BÖLÜMLER
+   ========================================================================== */
+
+.hero {
+  background-color: var(--navy-blue);
+  padding: 188px 0;
+  text-align: center;
+
+  width: 100%;
+  margin: 0 auto;
+  background-image: linear-gradient(
+      rgba(46, 47, 66, 0.7),
+      rgba(46, 47, 66, 0.7)
+    ),
+    url(../images/background.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-title {
+  color: var(--white);
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 1.07;
+  max-width: 496px;
+  margin: 0 auto 48px;
+}
+
+.hero-button {
+  background-color: var(--iris);
+  color: var(--white);
+  padding: 16px 32px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 16px;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.15);
+  transition: background-color var(--transition-duration)
+    var(--transition-timing-function);
+}
+
+.hero-button:hover,
+.hero-button:focus {
+  background-color: var(--ocean);
+}
+
+.feature-list {
+  display: flex;
+  gap: 24px;
+}
+.feature-item {
+  width: calc((100% - 72px) / 4);
+}
+.feature-icon-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 112px;
+  background-color: var(--cloud);
+  border-radius: 4px;
+  border: 1px solid var(--light-slate);
+  margin-bottom: 8px;
+}
+.feature-title {
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--navy-blue);
+  margin-bottom: 8px;
+}
+.feature-text {
+  line-height: 1.5;
+}
+
+.team-section {
+  background-color: var(--cloud);
+}
+.team-list {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+}
+.team-card {
+  background-color: var(--white);
+  width: calc((100% - 72px) / 4);
+  border-radius: 0 0 4px 4px;
+  box-shadow: 0 2px 1px 0 rgba(46, 47, 66, 0.08),
+    0 1px 1px 0 rgba(46, 47, 66, 0.16), 0 1px 6px 0 rgba(46, 47, 66, 0.08);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+.team-card img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+}
+.team-card-content {
+  padding: 32px 16px;
+  flex-grow: 1;
+}
+.team-name {
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--navy-blue);
+  margin-bottom: 8px;
+}
+.team-position {
+  margin-bottom: 8px;
+}
+
+.social-icons-list {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+}
+.social-icon-link {
+  width: 40px;
+  height: 40px;
+  background-color: var(--iris);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color var(--transition-duration)
+    var(--transition-timing-function);
+}
+.social-icon-link:hover,
+.social-icon-link:focus {
+  background-color: var(--ocean);
+}
+.icon {
+  fill: var(--cloud);
+}
+
+.portfolio-list {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 24px;
+  row-gap: 48px;
+}
+.portfolio-card {
+  width: calc((100% - 48px) / 3);
+  transition: box-shadow var(--transition-duration)
+    var(--transition-timing-function);
+}
+.portfolio-card:hover {
+  box-shadow: 0 2px 1px 0 rgba(46, 47, 66, 0.08),
+    0 1px 1px 0 rgba(46, 47, 66, 0.16), 0 1px 6px 0 rgba(46, 47, 66, 0.08);
+}
+.portfolio-image-wrap {
+  position: relative;
+  overflow: hidden;
+}
+.portfolio-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--iris);
+  color: var(--cloud);
+  padding: 40px 32px;
+  transform: translateY(100%);
+  transition: transform var(--transition-duration)
+    var(--transition-timing-function);
+  overflow-y: auto;
+}
+.portfolio-card:hover .portfolio-overlay {
+  transform: translateY(0);
+}
+.portfolio-card-content {
+  padding: 32px 16px;
+  border: 1px solid var(--cornflower);
+  border-top: none;
+}
+.portfolio-title {
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--navy-blue);
+  margin-bottom: 8px;
+}
+
+/* ==========================================================================
+   4. FOOTER
+   ========================================================================== */
+
+.footer {
+  background-color: var(--navy-blue);
+  padding: 100px 0;
+}
+.footer-container {
+  display: flex;
+  align-items: baseline;
+}
+.footer-logo {
+  display: inline-block;
+  margin-bottom: 16px;
+}
+.footer-logo span {
+  color: var(--cloud);
+}
+.footer-info {
+  margin-right: 120px;
+}
+.footer-text {
+  color: var(--cloud);
+  max-width: 264px;
+}
+.footer-socials-title,
+.footer-subscribe-title {
+  font-weight: 500;
+  color: var(--white);
+  margin-bottom: 16px;
+}
+.footer-socials .social-icons-list {
+  gap: 16px;
+  justify-content: flex-start;
+}
+.footer-socials .social-icon-link:hover,
+.footer-socials .social-icon-link:focus {
+  background-color: var(--green);
+}
+.footer-subscribe {
+  margin-left: 80px;
+}
+.footer-form {
+  display: flex;
+  gap: 24px;
+}
+.footer-input {
+  width: 264px;
+  height: 40px;
+  border: 1px solid var(--white);
+  border-radius: 4px;
+  background-color: transparent;
+  color: var(--white);
+  padding: 8px 16px;
+  opacity: 0.3;
+}
+.footer-input::placeholder {
+  color: var(--white);
+}
+.footer-subscribe-btn {
+  min-width: 165px;
+  height: 40px;
+  background-color: var(--iris);
+  color: var(--white);
+  border: none;
+  border-radius: 4px;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   5. MODAL & MOBİL MENÜ (CHECKBOX HACK)
+   ========================================================================== */
+
+/* Modal Başlangıç */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(46, 47, 66, 0.4); /* koyu yarı saydam */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;           /* dışarı tıklanamaz */
+  transition: opacity .3s ease, visibility .3s ease;
+  z-index: 9999;
+}
+
+/* Checkbox seçili olduğunda modalı göster */
+#modal-toggle:checked ~ .modal-backdrop {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.modal {
+  position: relative;
+  background-color: var(--dairy);
+  border-radius: 4px;
+  width: 95%;
+  max-width: 408px;
+  min-height: 584px;
+  padding: 72px 24px 24px;
+  box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.2), 0 1px 3px 0 rgba(0, 0, 0, 0.12),
+    0 1px 1px 0 rgba(0, 0, 0, 0.14);
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 24px;
+  height: 24px;
+  background-color: var(--cornflower); /* Başlangıç arka plan rengi */
+  color: var(--navy-blue); /* Başlangıç '×' rengi */
+  border-radius: 50%;
+  cursor: pointer;
+  
+  /* '×' işaretini dikey ve yatayda mükemmel ortalamak için */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  /* '×' işaretinin daha belirgin olması için font ayarları */
+  font-size: 22px;
+  line-height: 1; /* Dikey hizalama için önemli */
+
+  /* Renk değişiminde yumuşak bir geçiş için */
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+              color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-close-btn:hover,
+.modal-close-btn:focus {
+  background-color: var(--ocean); /* Üzerine gelince arka plan rengi */
+  color: var(--white); /* Üzerine gelince '×' rengi */
+}
+
+
+.modal-title {
+  font-weight: 500;
+  text-align: center;
+  color: var(--navy-blue);
+  margin-bottom: 16px;
+}
+.form-group {
+  margin-bottom: 8px;
+}
+.comment-group {
+  margin-bottom: 16px;
+}
+.form-label {
+  display: block;
+  font-size: 12px;
+  color: var(--light-slate);
+  margin-bottom: 4px;
+}
+.input-wrapper {
+  position: relative;
+}
+.form-input {
+  width: 100%;
+  height: 40px;
+  border: 1px solid rgba(46, 47, 66, 0.4);
+  border-radius: 4px;
+  padding-left: 38px;
+  outline: transparent;
+  transition: border-color var(--transition-duration)
+    var(--transition-timing-function);
+}
+.form-input:focus {
+  border-color: var(--iris);
+}
+.input-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  fill: var(--navy-blue);
+  transition: fill var(--transition-duration) var(--transition-timing-function);
+  width: 15px;
+}
+.form-input:focus + .input-icon {
+  fill: var(--iris);
+}
+.form-textarea {
+  width: 100%;
+  height: 120px;
+  resize: none;
+  border: 1px solid rgba(46, 47, 66, 0.4);
+  border-radius: 4px;
+  padding: 8px 16px;
+  outline: transparent;
+  transition: border-color var(--transition-duration)
+    var(--transition-timing-function);
+}
+.form-textarea:focus {
+  border-color: var(--iris);
+}
+.form-textarea::placeholder {
+  color: rgba(46, 47, 66, 0.4);
+}
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  color: var(--light-slate);
+}
+/* BUNLARI SİLDİĞİNİZ YERE EKLEYİN */
+
+.terms-checkbox {
+  display: flex;
+  align-items: center;
+  margin-top: 16px;
+  margin-bottom: 24px;
+}
+
+.terms-checkbox label {
+  font-size: 12px;
+  line-height: 1.17;
+  letter-spacing: 0.04em;
+  color: var(--light-slate); /* Rengi daha okunaklı yaptım */
+}
+
+.terms-checkbox input[type="checkbox"] {
+  margin-right: 8px;
+  width: 16px;
+  height: 16px;
+  border: 1px solid rgba(46, 47, 66, 0.4);
+  border-radius: 2px;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  flex-shrink: 0; /* Küçülmesini engelle */
+}
+
+.terms-checkbox input[type="checkbox"]:checked {
+  background-color: var(--ocean);
+  border-color: var(--ocean);
+  background-image: url("data:image/svg+xml,%3Csvg width='10' height='8' viewBox='0 0 10 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8.4429 0.999999L4.0157 5.42719L1.55708 2.96857L0.742915 3.78274L3.63942 6.67926L4.0157 7.05553L4.39198 6.67926L9.25708 1.81416L8.4429 0.999999Z' fill='%23F4F4FD'/%3E%3C/svg%3E");
+}
+
+.privacy-link {
+  color: var(--iris);
+  text-decoration: underline;
+}
+.form-submit-btn {
+  display: block;
+  margin: 24px auto 0;
+  min-width: 169px;
+  height: 56px;
+  font-weight: 500;
+  background-color: var(--iris);
+  color: var(--white);
+  border: none;
+  border-radius: 4px;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  transition: background-color var(--transition-duration)
+    var(--transition-timing-function);
+}
+.form-submit-btn:hover,
+.form-submit-btn:focus {
+  background-color: var(--ocean);
+}
+
+/* Mobil Menü Başlangıç */
+.mobile-menu-pane {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 72px 16px 40px;
+  background-color: var(--white);
+  flex-direction: column;
+  justify-content: space-between;
+  transform: translateX(100%);
+  transition: transform var(--transition-duration)
+    var(--transition-timing-function);
+  z-index: 998;
+  visibility: hidden;
+}
+
+/* Checkbox seçili olduğunda mobil menüyü göster */
+#mobile-menu-toggle:checked ~ .mobile-menu-pane {
+  transform: translateX(0);
+  visibility: visible;
+}
+.icon.icon-bar {
+  fill: var(--navy-blue);
+  stroke: var(--navy-blue);
+}
+.mobile-menu-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.mobile-menu-nav .nav-link {
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--navy-blue);
+  padding: 0;
+}
+.mobile-menu-nav .nav-link:hover{
+color: var(--iris);
+}
+.address-list{
+  position: relative;
+  top: -50px;
+}
+.mobile-menu-nav .nav-link::after {
+  display: none;
+}
+.mobile-menu-address .address-list {
+  flex-direction: column;
+  gap: 24px;
+  align-items: flex-start;
+}
+.mobile-menu-address .address-link {
+  font-size: 20px;
+  font-weight: 500;
+}
+.mobile-menu-address .address-link.accent {
+  font-size: 20px;
+  font-weight: 600;
+  
+}
+.mobile-menu-bottom .social-icons-list {
+  justify-content: flex-start;
+  gap: 32px;
+}
+
+/* ==========================================================================
+   6. TABLET GÖRÜNÜMÜ (1199px ve altı)
+   ========================================================================== */
+
+@media (max-width: 1199px) {
+  .container {
+    max-width: 768px;
+  }
+  .contact-address .address-list {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .contact-address .address-link {
+    font-size: 12px;
+  }
+  .hero {
+    padding: 112px 0;
+  }
+  .feature-list,
+  .team-list {
+    flex-wrap: wrap;
+    justify-content: center;
+    column-gap: 24px;
+    row-gap: 72px;
+  }
+
+  .feature-icon-box {
+    display: none;
+  }
+  .team-card img {
+    height: auto;
+  }
+  .feature-item,
+  .team-card {
+    width: calc((100% - 24px) / 2);
+  }
+  .portfolio-list {
+    row-gap: 72px;
+  }
+  .portfolio-card {
+    width: calc((100% - 24px) / 2);
+  }
+  .footer-container {
+    max-width: 580px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    column-gap: 24px;
+    row-gap: 72px;
+  }
+  .footer-info,
+  .footer-subscribe {
+    margin: 0;
+  }
+  .footer-form {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 16px;
+  }
+}
+
+/* ==========================================================================
+   7. MOBİL GÖRÜNÜM (767px ve altı)
+   ========================================================================== */
+
+@media (max-width: 767px) {
+  .section {
+    padding: 96px 0;
+  }
+
+  .header-container {
+    height: 70px;
+    justify-content: space-between;
+  }
+
+  .main-nav .nav-menu,
+  .contact-address {
+    display: none;
+  }
+
+  .mobile-menu-pane{
+    z-index: 999;
+  }
+  .hamburger-btn {
+    position: relative; /* EKLENEN KRİTİK SATIR BU */
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 24px;
+    height: 24px;
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+/* Bu yeni kuralı .hamburger-btn kuralının hemen altına ekleyin */
+.hamburger-btn span {
+    display: block;
+    width: 100%;
+    height: 3px; /* her bir çubuğun kalınlığı */
+    background-color: var(--navy-blue); /* çubukların rengi */
+    border-radius: 2px; /* çubuk kenarlarını yumuşat */
+}
+
+  .hero {
+    padding: 112px 0;
+  }
+  .hero-title {
+    font-size: 36px;
+    margin-bottom: 72px;
+  }
+  .team-card img {
+    height: auto;
+  }
+  .feature-list,
+  .team-list,
+  .portfolio-list {
+    flex-direction: column;
+    gap: 72px;
+  }
+  .feature-item,
+  .team-card,
+  .portfolio-card {
+    width: 100%;
+  }
+  .feature-icon-box {
+    display: none;
+  }
+  .feature-title {
+    font-weight: 700;
+  }
+
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 72px;
+  }
+  .footer-info,
+  .footer-socials {
+    text-align: center;
+  }
+  .footer-socials .social-icons-list {
+    justify-content: center;
+  }
+  .footer-subscribe {
+    width: 100%;
+  }
+  .footer-form {
+    align-items: center;
+    flex-direction: column;
+  }
+  .footer-input {
+    width: 265px;
+  }
+
+  .logo {
+    position: relative;
+    left: 40px;
+  }
+
+  .footer-subscribe-title {
+    text-align: center;
+  }
+
+  .footer button {
+    font-weight: bold;
+    line-height: 1.2rem;
+    letter-spacing: 0.5px;
+  }
+}
