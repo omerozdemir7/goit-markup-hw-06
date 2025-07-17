@@ -137,8 +137,7 @@ img {
 }
 
 .nav-link:hover,
-.nav-link:focus,
-.nav-link.current {
+.nav-link:focus {
   color: var(--ocean);
 }
 
@@ -165,6 +164,9 @@ img {
 .contact-address {
   margin-left: auto;
   font-style: normal;
+  position: relative;
+ left: 20px;
+  top: 50px;
 }
 
 .address-list {
@@ -202,7 +204,8 @@ img {
     ),
     url(../images/background.jpg);
   background-size: cover;
-  background-position: center;
+  
+  object-fit: contain;
 }
 
 .hero-title {
@@ -727,6 +730,7 @@ color: var(--iris);
   }
   .contact-address .address-link {
     font-size: 12px;
+   
   }
   .hero {
     padding: 112px 0;
